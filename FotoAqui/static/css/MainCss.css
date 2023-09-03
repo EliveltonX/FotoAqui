@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600&family=Poppins:wght@100;200&display=swap');
+
+:root{
+
+    /* CORES */
+    --white1: #ffffff;
+    --white2: #f5f6f7;
+    --white3: #e2e2e2;
+    --white_transp: rgba(255, 255, 255, 0.75);
+
+    --black1: #414141;
+    --black2: #585858;
+    --black_op85: rgba(0, 0, 0, 0.85);
+
+    --photo_Blue: #1e88e5;
+    --photo_Blue_light:#93c6f3;
+    --photo_Orange: #f1a930;
+
+    --msg_erro_1: #a40000;
+    --msg_erro_2: #ff9898;
+
+    --msg_warning_1: #a48000;
+    --msg_warning_1: #ffebcc;
+
+    /* Tamanhos de Fonte */
+
+}
+
+.noPaddingNoMargin{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+.noStyleLink{
+    text-decoration: none;
+    font-size: large;
+    color: var(--black1);
+}
+.noStyleLink:hover{
+    text-decoration: underline;
+}
+
+
+body{
+    background-color: var(--white3);
+    font-family: 'Poppins';
+    margin: 0px 0px;
+    padding: 0px 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.rodape{
+    margin: 0px 0px;
+    background-color: black;
+    color: var(--white3);
+    position: fixed;
+    width: 100%;
+    padding: 0rem 0rem;
+    padding-left: 2rem;
+    bottom: 0px;
+}
+
+.content_container{
+    position: relative;
+    min-width: 65vw;
+    height: auto;
+    margin: 2rem 12vw;
+    padding: 2rem 2rem;
+    background-color: var(--white1);
+    border-radius: 8px;
+    box-sizing: content-box;
+    box-shadow: 0px 2px 4px rgba(212, 212, 212, 0.5);
+}
+
+.content_container2{
+    top: 10%;
+    min-height: 12rem;
+    height: auto;
+    min-width: 30vw;
+    padding: 2rem 2rem;
+    background-color: var(--white1);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(212, 212, 212, 0.5);
+}
+
+.horizontal_layout{
+    top: 10%;
+    margin: 4rem 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 2rem 2rem;
+    gap: 2rem;
+}
+.vertical_layout{
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.checkoutCompleteDiv{
+    margin-top: 10vh;
+    height: 85vh;
+    background-color: var(--white1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.start_activation_account_div{
+    margin-top: 10vh;
+    height: 85vh;
+    background-color: var(--white1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn-Download{
+    background-color: var(--photo_Blue);
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-Download:hover, .btn-Download:active {
+    background-color: var(--photo_Blue_light);
+  }
+
+
+
+.btn-addToCart{
+    background-color: var(--photo_Blue);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    padding: 6px 14px;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    border: 0;
+    cursor: pointer;
+}
+
+.btn-addToCart:hover {
+    color: #93c6f3;
+}
+
+.btn-removeFromCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    max-width: 80%;
+    border-radius: 6px;
+    border: none;
+    background: #6E6D70;
+    color: #DFDEDF;
+}
+.btn-removeFromCart:hover {
+    background-color: var(--black1);
+}
+.div_likeDislike{
+    display: flex;
+    flex-direction: row;
+    max-width: 80%;  
+}
+
+.btn-deleteThisImg{
+    background: var(--msg_erro_2);
+    border: 1px solid var(--msg_erro_1);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.btn-deleteThisImg:hover,
+.btn-deleteThisImg:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.btn-deleteThisImg:active {
+  opacity: .5;
+}
+
+
+.btn-likeThisImg{
+    background: var(--photo_Blue_light);
+    border: 1px solid var(--photo_Blue);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.btn-likeThisImg:hover,
+.btn-likeThisImg:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.btn-likeThisImg:active {
+  opacity: .5;
+}
+
+.expiration-date{
+    color: var(--msg_erro_1);
+    background-color: var(--msg_erro_2);
+    border-radius: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.profilePage_container{
+    display: flex;
+    flex-direction: column;
+}
+.profilePage_container2{
+    display: flex;
+    flex-direction: row;
+}
+.profilePage_perfilImg{
+    height: 200px;
+    border: 1px solid var(--black2);
+    border-radius: 1rem;
+    background-color: var(--white3);
+}
+.profilePage_nameDiv{
+    display: flex;
+    flex-direction: column;
+
+}
+.h_insedinsideTitle{
+    margin: 0px 0px 0px 30px;
+}
+.profilePage_statistic{
+    margin-top: 2rem;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+.h_insedinsideStats{
+    margin: 0px 0px;
+    padding: 1rem 1rem;
+    
+}
+.statistics_card{
+    width: fit-content;
+    background-color: var(--white3);
+    border: 1px solid var(--black2);
+    border-radius: 1rem;
+    text-align: center;
+}

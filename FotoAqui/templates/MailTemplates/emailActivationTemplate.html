@@ -1,0 +1,8 @@
+{% autoescape off %}
+Olá {{ user.username }},
+
+Por favor click no link abaixo para confirmar seu email e conta no FotoAqui!!!
+
+http://{{ domain }}{% url 'FotoAqui:activate' uidb64=uid token=token %}
+
+{% endautoescape %}

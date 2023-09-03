@@ -1,0 +1,20 @@
+
+.cart_bar{
+    color: var(--white1);
+    z-index: 1;
+    background-color: var(--photo_Blue);
+    position: fixed;
+    bottom: 0px;
+    height: 8rem;
+    padding: 1rem 4rem;
+    width: 100vw;
+    box-sizing:border-box ;
+
+}
+
+.horizontal_Layout_cartBar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}

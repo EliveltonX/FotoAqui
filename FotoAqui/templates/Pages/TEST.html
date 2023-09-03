@@ -1,0 +1,22 @@
+{% extends 'global.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="myImgsContainer">
+    <h2 class="noPaddingNoMargin">Minhas Imagens</h2>
+
+    {{registerForm}}
+
+</div>
+
+<div class="rodape">
+    made by Elivelton AP
+</div>
+
+{% include 'Partials/cart_bar.html' %}
+
+<link rel="stylesheet" href="{% static '/css/Gallery.css' %}">
+
+
+{% endblock content %}

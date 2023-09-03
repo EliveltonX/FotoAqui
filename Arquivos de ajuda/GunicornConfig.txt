@@ -1,0 +1,75 @@
+###############################################################################
+# Replace
+# fotoaqui_gunicorn to the name of the gunicorn file you want
+# ubuntu to your user name
+# app_repo to the folder name of your project
+# FotoAquiProject to the folder name where you find a file called wsgi.py
+#
+###############################################################################
+# Criando o arquivo fotoaqui_gunicorn.socket
+sudo nano /etc/systemd/system/fotoaqui_gunicorn.socket
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=gunicorn blog socket
+
+[Socket]
+ListenStream=/run/fotoaqui_gunicorn.socket
+
+[Install]
+WantedBy=sockets.target
+
+###############################################################################
+# Criando o arquivo fotoaqui_gunicorn.service
+sudo nano /etc/systemd/system/fotoaqui_gunicorn.service
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=Gunicorn daemon (You can change if you want)
+Requires=fotoaqui_gunicorn.socket
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+Restart=on-failure
+EnvironmentFile=/home/ubuntu/app_repo/.env
+WorkingDirectory=/home/ubuntu/app_repo
+# --error-logfile --enable-stdio-inheritance --log-level and --capture-output
+# are all for debugging purposes.
+ExecStart=/home/ubuntu/app_repo/venv/bin/gunicorn \
+          --error-logfile /home/ubuntu/app_repo/gunicorn-error-log \
+          --enable-stdio-inheritance \
+          --log-level "debug" \
+          --capture-output \
+          --access-logfile - \
+          --workers 6 \
+          --bind unix:/run/fotoaqui_gunicorn.socket \
+          FotoAquiProject.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###############################################################################
+# Ativando
+sudo systemctl start fotoaqui_gunicorn.socket
+sudo systemctl enable fotoaqui_gunicorn.socket
+
+# Checando
+sudo systemctl status fotoaqui_gunicorn.socket
+curl --unix-socket /run/fotoaqui_gunicorn.socket localhost
+sudo systemctl status fotoaqui_gunicorn
+
+# Restarting
+sudo systemctl restart fotoaqui_gunicorn.service
+sudo systemctl restart fotoaqui_gunicorn.socket
+sudo systemctl restart fotoaqui_gunicorn
+
+# After changing something
+sudo systemctl daemon-reload
+
+# Debugging
+sudo journalctl -u fotoaqui_gunicorn.service
+sudo journalctl -u fotoaqui_gunicorn.socket

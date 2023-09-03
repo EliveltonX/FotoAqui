@@ -1,0 +1,58 @@
+{% load static %}
+<div class="navBar">
+    <div class="navBarLogo">
+        <a href="{% url 'FotoAqui:home' %}">
+            <img class="navBarLogo" src="{% static '/layout/navBarLogo.png' %}" alt="logo fotoAqui">
+        </a>
+    </div>
+{% if request.user.is_authenticated %}
+
+    <div class="navBarLinks">
+        {% if info.isPhotogapher == True %}
+        <a href="{% url 'FotoAqui:dashboard' %}" class="noPaddingNoMargin noStyleLink" >Dashboard</a>
+        {% endif %}
+        <a href="{% url 'FotoAqui:my_images' %}" class="noPaddingNoMargin noStyleLink" >Novas Fotos</a>
+        <a href="{% url 'FotoAqui:my_books' %}" class="noPaddingNoMargin noStyleLink" >Meu Album</a>
+        <a href="#" class="noPaddingNoMargin noStyleLink" disabled >Procurar</a>
+    </div>
+
+    <div class="navBarUserConfig">
+        <a href="{% url 'FotoAqui:account' %}" class="">
+            {% if info.img_perfil == 'SEM-IMAGEM'%}
+            <img class="navBarUserAvatar" src="{% static 'layout/perfilDefault.png' %}" alt="Foto de Perfil">
+            {% else %}
+            <img class="navBarUserAvatar" src="{{info.img_perfil}}" alt="Foto de Perfil">
+            {% endif %}
+        </a>
+        <a href="{% url 'FotoAqui:account' %}" class="noPaddingNoMargin noStyleLink">{{request.user}}</a>
+    </div>
+    <div class="menuIconHamb" id="menuIcon_Hamb" onclick=" ShowMenu_Mobile()">
+        <img class="imgMenuIcon" src="{% static '/layout/menuIconLowRes.png' %}" alt="menu">
+    </div>
+
+{% else %}
+
+    <a href="{% url 'FotoAqui:home' %}" class="noPaddingNoMargin noStyleLink navBarUserConfig" >Login</a>
+    
+{% endif %}
+</div>
+
+{% include 'Partials/messages.html' %}
+
+
+<div class="mobileMenu" id="mobileMenu">
+    {% if info.isPhotogapher == True %}
+    <a href="{% url 'FotoAqui:dashboard' %}" class="noPaddingNoMargin noStyleLink" >Dashboard</a>
+    {% endif %}
+    <a href="{% url 'FotoAqui:my_images' %}" class="noPaddingNoMargin noStyleLink" >Novas Fotos</a>
+    <a href="{% url 'FotoAqui:my_books' %}" class="noPaddingNoMargin noStyleLink" >Meu Album</a>
+    <a href="#" class="noPaddingNoMargin noStyleLink" >Procurar</a>
+    <a href="{% url 'FotoAqui:account' %}" class="noPaddingNoMargin noStyleLink" >Minha Conta</a>
+</div>
+
+
+<link rel="stylesheet" href="{% static '/css/navBar.css' %}">
+<script src="{% static '/js/navBar.js' %}"></script>
+
+
+

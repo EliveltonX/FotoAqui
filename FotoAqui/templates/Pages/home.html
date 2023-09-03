@@ -1,0 +1,79 @@
+{% extends 'global.html' %}
+{% load static %}
+{% block content %}    
+
+<div class="backgroundLogin">
+       
+</div>
+
+<div class="loginWindow" id="loginWindow">
+    <h2 class="noPaddingNoMargin">Entrar</h2>
+    
+    <form action="{% url 'FotoAqui:loginCreate' %}" method='POST' class="loginForm">
+        {% csrf_token %}
+        <h4 class="noPaddingNoMargin">Email</h4>
+        {{loginForm.username}}
+        <br>
+        <h4 class="noPaddingNoMargin">Senha</h4>
+        {{loginForm.password}}
+        <br>
+        <button class="btn_style_1">Entrar</button>
+    </form>
+        <button class="btn_style_1" onclick="ToRegister()">Registrar</button>
+</div>
+
+<div class="registerWindow" id="registerWindow">
+    <h2 class="noPaddingNoMargin">Registrar</h2>
+    
+    <form action="{% url 'FotoAqui:register_create' %}" class="loginForm" method = 'POST'>
+        {% csrf_token %}
+        <h4 class="noPaddingNoMargin">Usuario</h4>
+        {{registerForm.username}}
+        <br>
+        <h4 class="noPaddingNoMargin">Email</h4>
+        {{registerForm.email}}
+        <br>
+        <h4 class="noPaddingNoMargin">Senha</h4>
+        {{registerForm.password}}
+        <br>
+        <h4 class="noPaddingNoMargin">Confirmar Senha</h4>
+        {{registerForm.password_conf}}
+        <br>
+        <button class="btn_style_1">Registrar</button>
+    </form>
+        <button class="btn_style_1" onclick="ToLogin()">Já Tenho Registro</button>
+</div>
+
+<div class="bottomContainer">
+    
+    <h2 class="noPaddingNoMargin">Sobre nós:</h2>
+
+
+    {% for coment in comments %}
+
+    <div class="commentsWheel">
+        <img class="commentImgPerf" src="{% static 'layout/perfilDefault.png' %}" alt="fotoPerfil">
+        <h4 class="noPaddingNoMargin"> 
+            {{coment.comment}}<br><br>
+           <i> {{coment.account}} </i>
+        </h4>
+
+    </div>
+    {% empty %}
+    <div class="commentsWheel">
+        <h4>Nao foram encontrados comentarios.</h4>
+    </div>
+
+
+    {% endfor %}
+
+</div>
+
+{% include 'Partials/rodape.html' %}
+
+<link rel="stylesheet" href="{% static '/css/bottomContainer.css' %}">
+<link rel="stylesheet" href="{% static '/css/LoginWindow.css' %}">
+<script src="{% static '/js/loginPage.js' %}"></script>
+
+
+{% endblock content %}

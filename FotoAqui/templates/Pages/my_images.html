@@ -1,0 +1,50 @@
+{% extends 'global.html' %}
+{% load static %}
+{% load watermark %}
+{% block content %}
+{% load useVar %}
+
+
+<div class="myImgsContainer">
+    <h2 class="noPaddingNoMargin">Novas Fotos</h2>
+
+    <div class="imgsContainer">
+        <ul class="image-gallery">
+
+            {% for img in imgs %}
+                <li>
+                    <img src = "{{img.photo_img.url | watermark:"watermark01,position=R,opacity=70,scale=R90%,tile=1" }}"
+                    alt=""
+                    onclick = "showModal(this,{{img.id}});"
+                    />
+                    <div class="imgOverlay">
+                        
+                        <h4 class="expiration-date">Expira em: {{img.expiration_date}}<h4>
+                        
+                        <div class="div_likeDislike">
+                            <button id='btn-addtocart_{{img.id}}' class='btn-addToCart' onclick="addToCart(this,{{img.id}})">Adicionar ao carrinho</button>
+                            <button id='btn-removetocart_{{img.id}}' class='btn-removeFromCart' onclick="removeFromCart(this,{{img.id}})">Remover do carrinho</button>
+                            <button class='btn-likeThisImg' ><i class="fa-solid fa-thumbs-up" style="color: #1e88e5;"></i></button>
+                            <button class='btn-deleteThisImg' ><i class="fa-solid fa-thumbs-down" style="color: #a40000"></i></button>
+                        </div>
+                    </div>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<a href="{% url 'FotoAqui:checkout' %}" hidden id='cart_link'>Isso nao deveria estar aparecendo na sua tela!</a>
+
+{% include 'Partials/imgs_modal.html' %}
+
+{% include 'Partials/cart_bar.html' %}
+
+<link rel="stylesheet" href="{% static '/css/Gallery.css' %}">
+
+<script type="text/javascript">
+    var price = "{{ business.img_price | js }}";
+</script>
+
+{% endblock content %}

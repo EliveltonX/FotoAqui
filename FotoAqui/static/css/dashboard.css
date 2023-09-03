@@ -1,0 +1,113 @@
+.dashboar_top_row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin: 4rem 4rem;
+    margin-bottom: 1rem;
+}
+
+.dashboardContainer{
+    max-width: 45vw;
+    flex-grow: 1;
+    height: 30rem;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    background-color: var(--white1);
+}
+
+.uploadContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 45vw;
+    flex-grow: 1;
+    height: 30rem;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    background-color: var(--white1);
+}
+
+.uploadsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-top: 1rem;
+    gap: 1rem;
+}
+
+.myUploads{
+    background-color: var(--white1);
+    justify-content: space-between;
+    flex-shrink: 1;
+    margin: 1rem 4rem;
+    min-height: 25rem;
+    max-width:95vw;
+    padding: 1rem 2rem;
+}
+
+.imgInput{
+    display: none;
+}
+
+.inputLabel{
+    min-height: 30vh;
+    aspect-ratio: 1/1;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px dashed;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: var(--white3);
+    color: var(--photo_Blue_light);
+    transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+.inputLabel:hover{
+    color: var(--photo_Blue);
+    background-color: var(--white2);
+}
+
+
+.uploadCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    background-color: #585858;
+    max-width: 25rem;
+    height: 100px;
+    padding: .5rem .5rem;
+}
+.uploadCard > img{
+    height: 100px;
+    width: auto;
+}
+@media only screen and (max-width: 900px) {
+
+    .dashboar_top_row{
+        flex-direction: column;
+    }
+
+    .dashboardContainer{
+        max-width: 95vw;
+        height: 20rem;
+        padding: .5rem 1rem;
+
+    }
+    .uploadContainer{
+        max-width: 95vw;
+        height: 20rem;
+        padding: .5rem 1rem;
+    }
+    .myUploads{
+        background-color: var(--white1);
+        margin: 1rem 4rem;
+        min-height: 8rem;
+        max-width:95vw;
+        padding: 1rem 2rem;
+    }
+
+}

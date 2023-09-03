@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ptbr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="{% static '/js/csrfTokens.js' %}"></script>
+    <link rel="icon" href="{% static '/layout/favicon.png' %}">
+    <link rel="stylesheet" href="{% static '/css/MainCss.css' %}">
+    <script src="https://kit.fontawesome.com/4142729ba0.js" crossorigin="anonymous"></script>
+
+    <title>FotoAqui</title>
+</head>
+<body>
+    {% include 'Partials/navBar.html' %}
+    {% block content %}
+    
+    {% endblock content %}
+{% include 'Partials/rodape.html' %}
+</body>
+</html>

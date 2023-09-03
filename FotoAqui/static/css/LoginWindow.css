@@ -1,0 +1,79 @@
+
+#loginWindow,#registerWindow{
+    display: none;
+    margin-top: 8rem;
+    position: absolute;
+    width: 25rem;
+    height: max-content;
+    left: 50%;
+    top: 0%;
+    transform: translate(-12.5rem,0rem);
+    padding: 1rem 1rem;
+    background-color:rgba(255, 255, 255, 0.75);
+    border-radius: .5rem;
+    border: 1px solid var(--white2);
+    box-shadow: 0px 2px 4px rgba(212, 212, 212, 0.5);
+}
+
+.registerWindow{
+    display: none;
+    top: -5%;
+ 
+}
+
+.backgroundLogin{
+    background-color: #414141;
+    background-image: url("../layout/background.jpg");
+    background-size: cover;
+    height: 40rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputTextStyle{
+    height: 2rem;
+    font-size: large;
+    font-family: 'Montserrat';
+    border-radius: 8px;
+    border: 2px solid var(--white1);
+    background-color: var(--white1);
+    outline: none;
+    resize: none;
+    
+
+}
+.inputTextStyle:focus{
+    background-color: var(--white2);
+    border: 2px solid var(--photo_Blue);
+    outline: none;
+    resize: none;
+}
+.inputTextStyle:hover{
+    background-color: var(--white2);
+    border: 2px solid var(--photo_Blue);
+    outline: none;
+    resize: none;
+}
+
+.btn_style_1{
+    font-family: 'Poppins';
+    width: 100%;
+    background-color: var(--photo_Blue);
+    color: var(--white1);
+    border-radius: 8px;
+    border: 2px solid var(--photo_Blue);
+    height: 2.3rem;
+    margin-bottom: 1rem;
+    font-size: large;
+    text-decoration: none;
+}
+.btn_style_1:hover{
+    background-color: var(--white1);
+    color: var(--photo_Blue);
+}

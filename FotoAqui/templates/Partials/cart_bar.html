@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="cart_bar" id="cart_bar">
+    <h3 class="noPaddingNoMargin">Selecionadas:</h3>
+    <hr class="noPaddingNoMargin"><br>
+
+    <div class="horizontal_Layout_cartBar noPaddingNoMargin">
+
+        <div class="left noPaddingNoMargin">
+            <h4 class="noPaddingNoMargin" id='cart_bar_qtd'>Imagens selecionadas: 25 </h4>
+            <h4 class="noPaddingNoMargin" id='cart_bar_value'>Valor: R$ 25,00 </h4>
+        </div>
+        <div class="right noPaddingNoMargin">
+            <button onclick='go_to_cart()'>salvar e ir Para Checkout</button>
+            <button onclick="clear_cart_bar(this)">Limpar</button>
+        </div>   
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="{% static '/css/cart_bar.css' %}">
+<script src="{% static '/js/cart_bar.js' %}"></script>

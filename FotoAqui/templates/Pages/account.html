@@ -1,0 +1,72 @@
+{% extends 'global.html' %}
+{% load static %}
+{% block content %}
+<br><br>
+<div class="setings_navBar">
+
+    <h3 id="btn_myPerfil" onclick="Show_myPerfil()">Meu Perfil</h3>
+    <h3 id="btn_perfilEdit" onclick="Show_editPerfil()">Editar Perfil</h3>
+    <h3 id="btn_Photographer" onclick="Show_photographer()">Torne-se Fotografo</h3>
+    <h3 id="btn_help" onclick="Show_help()">Ajuda</h3>
+    <a href="{% url 'FotoAqui:logoutCreate' %}">
+        <h3>Efetuar logout</h3>
+    </a>
+    
+
+</div>
+<div class="content_container perfil_edit">
+    
+    <form action="#" class="information_form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h4 class="noPaddingNoMargin">Email</h4>
+        {{account_form.email}}
+        <br>
+        <h4 class="noPaddingNoMargin">Primeiro Nome</h4>
+        {{account_form.first_name}}
+        <br>
+        <h4 class="noPaddingNoMargin">Sobrenome</h4>
+        {{account_form.last_name}}
+        <br>
+        <hr>
+        <h4 class="noPaddingNoMargin">CPF</h4>
+        {{account_form.cpf}}
+        <br>
+        <h4 class="noPaddingNoMargin">Data Nascimento</h4>
+        {{account_form.data_nasc}}
+        <br>
+        <h4 class="noPaddingNoMargin">Imagem de Perfil</h4>
+        {{account_form.img_perfil}}
+        <br>
+        <hr>
+        <button class="btn_style_1">Salvar</button>
+        <button class="btn_style_1">Resetar</button>
+
+    </form>
+
+</div>
+
+<div class="content_container my_perfil">
+
+    {% include 'Partials/meu_perfil.html' %}
+
+</div>
+
+<div class="content_container reg_fotographer">
+
+    Torne-se Fotografo
+
+</div>
+
+<div class="content_container help">
+
+   Ajuda
+
+</div>
+
+{% include 'Partials/rodape.html' %}
+
+<link rel="stylesheet" href="{% static '/css/settings.css' %}">
+<script src="{% static '/js/settings.js' %}"></script>
+
+
+{% endblock content %}

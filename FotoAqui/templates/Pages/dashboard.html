@@ -1,0 +1,58 @@
+{% extends 'global.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="dashboar_top_row">
+    <div class="dashboardContainer">
+        <h2 class="noPaddingNoMargin">Dashboard</h2>
+        <br>
+        Carteira: $69,69<br>
+        Fotos vendidas: 189<br>
+        Fotos Carregadas: 364<br>
+        <br><br>
+        <span>As transferencias ocorrem todas as quinta-feiras. de acordo com as politicas de FotoAqui</span>
+
+    </div>
+    <div class="uploadContainer">
+        <h2 class="noPaddingNoMargin">Upload</h2>
+            <form action="{% url 'FotoAqui:upload_img' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{image_load.client_email}}
+                <label class="inputLabel" for="imgs">
+                    <!--{{image_load.photo_img}}-->
+                    <input type="file" name="photo_img" class="imgInput" id="imgs" accept="image/*" multiple="true">
+                    <span>Selecione as Imagens</span>
+                </label>
+                <button class="btn_style_1" type="submit">Enviar</button>
+            </form>
+            
+    </div>    
+</div>
+
+<div class="myUploads">
+    <h2 class="noPaddingNoMargin">Meus Uploads</h2>
+
+    <div class="uploadsContainer">
+
+        {% for load in loads %}
+        
+        <div class="uploadCard">
+            <img src="/img/myGallery/img (7).jpg" alt="img">
+            <div>
+                <h3 class="noPaddingNoMargin">{{load.date_added}}</h3>
+                <h3 class="noPaddingNoMargin">qtd: {{load.numberOfImages}}</h3>
+                <h3 class="noPaddingNoMargin">likes: {{load.numberOfLikes}} - dislikes: {{load.numberOfDislikes}}</h3>
+            </div>
+        </div>
+        
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="{% static '/css/dashboard.css' %}">
+
+{% endblock content %}

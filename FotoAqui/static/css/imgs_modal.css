@@ -1,0 +1,29 @@
+
+
+.imgs_modal{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    height: 75vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    background-color:  rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 8%;
+    align-items: center;
+    justify-content: center;
+}
+.big_img{
+    max-height: 65vh;
+    max-width: 90vw;
+}
+
+.btn_close_modal{
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    z-index: 10;
+    right: 1rem;
+    top: 1rem;
+    background-color: var(--msg_erro_1);
+}

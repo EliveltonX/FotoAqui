@@ -1,0 +1,92 @@
+.navBar{
+    overflow: hidden;
+    top: 0px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    width:100%;
+    height: 2rem;
+    background-color: var(--white1);
+    margin: 0px 0px;
+    z-index: 3;
+    padding: .5rem;
+    box-shadow: 0px 2px 4px rgba(100,100,100,0.3);
+}
+.navBar > a{
+    margin-left: .5rem;
+    margin-right: .5rem;
+}
+.navBarLogo{
+    margin-left: 2rem;
+    width: 9rem;
+}
+.navBarLinks{
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 28rem;
+}
+
+.navBarUserConfig{
+    margin-right: 4rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.navBarUserAvatar{
+    width: 2rem;
+    height: 2rem;
+}
+.navBarUserAvatar:hover{
+    border: 1px solid var(--photo_Blue);
+    border-radius: 50%;
+}
+.menuIconHamb{
+    display: none;
+}
+.imgMenuIcon{
+    display: none;
+}
+.mobileMenu{
+    display: flex;
+    position: fixed;
+    top: 10%;
+    right: 0px;
+    z-index: 5;
+
+}
+
+
+
+@media only screen and (max-width: 900px) {
+   .navBarUserConfig{
+    display: none;
+   }
+   .navBarLinks{
+    display: none;
+   }
+   .menuIconHamb{
+    display: flex;
+    margin-right: 4rem;
+   }
+   .imgMenuIcon{
+    display: block;
+    min-width: 1rem;
+    min-height: 1rem;
+   }
+   .mobileMenu{
+    display: none;
+    position: fixed;
+    right: 0px;
+    flex-direction: column;
+    background-color: var(--white3);
+    width: 50%;
+    height: 100%;
+    gap: 2rem;
+    padding: 1rem 1rem;
+    }
+
+}

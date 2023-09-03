@@ -1,0 +1,84 @@
+{% extends 'global.html' %}
+{% load static %}
+{% load watermark %}
+{% block content %}
+{% load useVar %}
+
+<div class="horizontal_layout noPaddingNoMargin">
+
+    
+    <div class="content_container2 noPaddingNoMargin">
+        <h3 class="noPaddingNoMargin">Imagens:</h3>
+        <hr class="noPaddingNoMargin"><br>
+        <h4 class="noPaddingNoMargin" id="total_imgs">Imagens Selecionadas: {{order.qtd_imgs}}</h4>
+        <hr class="noPaddingNoMargin">
+
+        {% for img in imgs %}
+        {% include 'Partials/img_card_checkout.html' %}
+        
+        {% endfor %}
+   
+
+        <hr class="noPaddingNoMargin"><br>
+        <h3 class="noPaddingNoMargin" id="total_price">Total:</h3>
+
+    </div>
+
+    <div class="content_container2 noPaddingNoMargin">
+        <h3 class="noPaddingNoMargin">Pagamento:</h3>
+        <hr class="noPaddingNoMargin"><br>
+    
+    
+        <div id="paypal-button-container"></div>
+
+        <script
+        src="https://www.paypal.com/sdk/js?client-id=AZSu5XCufZm6LfCoEBhonvLqDwuT1Yg95MawzwwXuXqedBRrsQPxbzVFhbT847r32TbVVvr0NJAcGCCk&currency=BRL">
+        </script>
+
+        <script type="text/javascript">
+
+          order_id = '{{order.id}}';
+          qtd = "{{order.qtd_imgs}}";
+          img_price = "{{business.img_price}}";
+          value = (qtd*img_price).toFixed(2);
+    
+
+          paypal.Buttons({
+            createOrder: function(data, actions) {
+              // This function sets up the details of the transaction, including the amount and line item details.
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: value
+                  }
+                }]
+              });
+            },
+            onApprove: function(data, actions) {
+              // This function captures the funds from the transaction.
+              return actions.order.capture().then(function(details) {
+                // This function shows a transaction success message to your buyer.
+                // alert('Transaction completed by ' + details.payer.name.given_name);
+                completeOrder();
+                window.location.href = "http://127.0.0.1:8000/checkout_complete/";
+              });
+            }
+          }).render('#paypal-button-container');
+          //This function displays Smart Payment Buttons on your web page.
+        </script>
+         
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="{% static '/css/checkout.css' %}">
+
+<script type="text/javascript">
+    price = {{business.img_price}};
+    qtd = {{order.qtd_imgs}};
+</script>
+    
+{% include 'Partials/rodape.html' %}
+<script src="{% static '/js/Checkout.js' %}"></script>
+
+{% endblock content %}

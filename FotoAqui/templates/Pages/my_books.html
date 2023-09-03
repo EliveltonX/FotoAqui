@@ -1,0 +1,36 @@
+{% extends 'global.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="myImgsContainer">
+    <h2 class="noPaddingNoMargin">Meu Album</h2>
+
+    
+    <div class="imgsContainer">
+        <ul class="image-gallery">
+            
+            {% for img in imgs %}
+                <li>
+                    <img src = "{{img.photo_img.url}}"
+                    alt=""
+                    onclick = "showModal(this,{{img.id}})"
+                    />
+                    <div class="imgOverlay">
+                        
+                        <a class='btn-Download' download="FotoAqui.jpg" href="{{img.photo_img.url}}" title="Download">Download</a>
+                        <button disabled>Deletar esta Imagen</button>
+                    </div>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% include 'Partials/imgs_modal_book.html' %}
+
+<link rel="stylesheet" href="{% static '/css/Gallery.css' %}">
+
+
+{% endblock content %}

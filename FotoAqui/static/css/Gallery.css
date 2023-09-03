@@ -1,0 +1,124 @@
+
+.myImgsContainer{
+    height: auto;
+    min-height: 60vh;
+    min-width: 60vw;
+    max-width: 90vw;
+    padding: 2rem 2rem;
+    margin-top: 4rem;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white1);
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(212, 212, 212, 0.5);
+}
+
+.image-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    gap: 1rem;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    padding-top: 2rem;
+}
+.image-gallery::after{
+    content: "";
+    flex-grow: 999;
+}
+.image-gallery > li{
+    height: 200px;
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    flex: 1 1 auto;
+}
+.image-gallery > ul{
+    margin: 0px 0px;
+    padding: 0px 0px;
+}
+.image-gallery li img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.imgOverlay{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    max-width: 70%;
+}
+.imgOverlay>h4{
+    margin: 0;
+    padding: 0;
+}
+
+li:hover .imgOverlay{
+    opacity: 1;
+}
+
+
+/*
+    ModalIMGView
+*/
+
+.modalImageView{
+    position: fixed;
+    padding-top: 3rem;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    color: var(--white1);
+    background-color: var(--black_op85);
+    z-index: 2;
+}
+.imgContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.imgContainer > img{
+    max-height: 70vh;
+}
+
+.modalImgsButtons{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.modalImageView > .upperBar{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 2rem 2rem;
+}
+
+.upperBar > .closebtn{
+    transform: translate(2rem, -2rem);
+}
+
+@media only screen and (max-width: 900px) {
+    .imgContainer > img{
+        max-width: 90vw;
+    }
+    .upperBar > .closebtn{
+        width: 4rem;
+        height: 4rem;
+        transform: translate(2rem, -2rem);
+    }
+}

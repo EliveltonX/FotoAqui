@@ -1,0 +1,10 @@
+{% load watermark %}
+<div class="img_card">
+    <img src="{{img.photo_img.url | watermark:"watermark01,position=R,opacity=70,scale=R90%,tile=1" }}" class="img_thumb" alt="thumb">
+    <div class="vertical_layout">
+        <h4 class="noPaddingNoMargin">id: {{img.id}}</h4>
+        <h4 class="noPaddingNoMargin">adicionado em: {{img.created_at}}]</h4>
+    </div>
+    <h3>R$ {{business.img_price}}</h3>
+    <button title=" alguns recursos estão desabilitados por hora " disabled>Remover</button>
+</div>

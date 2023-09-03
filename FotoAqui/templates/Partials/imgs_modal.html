@@ -1,0 +1,14 @@
+{% load static %}
+<div class="imgs_modal" id="imgs_modal">
+    <img src="{% static 'layout/myGallery/img (3).jpg' %}" alt="alternative" class="big_img" id="big_img">
+    <div class="modal_btns">
+        <button disabled>Anterior</button>
+        <button onclick="addToCart(this,imgID_on_ModalView)">Adicionar ao carrinho</button>
+        <button onclick="removeFromCart(this,imgID_on_ModalView)">Remover</button>
+        <button disabled>Proxima</button>
+    </div>
+    <button class='btn_close_modal' onclick="hideModal()">X</button>
+</div>
+
+<script src="{% static '/js/imgs_modal.js' %}"></script>
+<link rel="stylesheet" href="{% static '/css/imgs_modal.css' %}">
