@@ -4,38 +4,37 @@
 {% block content %}
 
 
-<div class="dashboar_top_row">
-    <div class="dashboardContainer">
-        <h2 class="noPaddingNoMargin">Dashboard</h2>
-        <br>
-        Carteira: $69,69<br>
-        Fotos vendidas: 189<br>
-        Fotos Carregadas: 364<br>
-        <br><br>
-        <span>As transferencias ocorrem todas as quinta-feiras. de acordo com as politicas de FotoAqui</span>
 
-    </div>
-    <div class="uploadContainer">
-        <h2 class="noPaddingNoMargin">Upload</h2>
-            <form action="{% url 'FotoAqui:upload_img' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <label class="inputLabel" for="imgs">
-                    <!--{{image_load.photo_img}}-->
-                    <input type="file" name="photo_img" class="imgInput" id="imgs" accept="image/*" multiple="true">
-                    <span id="numOfFiles">Selecione as Imagens</span>
-                </label>
-
-                <div class="upload_imgs_preview" id="upload_imgs_preview">
-
-
-                </div>
-                
-                {{image_load.client_email}}
-                <button class="btn_style_1" id="uploadSubmitBtn" type="submit">Enviar</button>
-            </form>
-            
-    </div>    
+<div class="dashboardContainer">
+    <h2 class="noPaddingNoMargin">Dashboard</h2>
+    <br>
+    Carteira: $69,69<br>
+    Fotos vendidas: 189<br>
+    Fotos Carregadas: 364<br>
+    <br><br>
+    <span>As transferencias ocorrem todas as quinta-feiras. de acordo com as politicas de FotoAqui</span>
 </div>
+
+<div class="uploadContainer">
+    <h2 class="noPaddingNoMargin">Upload</h2>
+        <form action="{% url 'FotoAqui:upload_img' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="inputLabel" for="imgs">
+                <!--{{image_load.photo_img}}-->
+                <input type="file" name="photo_img" class="imgInput" id="imgs" accept="image/*" multiple="true">
+                <span id="numOfFiles">Selecione as Imagens</span>
+            </label>
+
+            <div class="upload_imgs_preview" id="upload_imgs_preview">
+
+
+            </div>
+            
+            {{image_load.client_email}}
+            <button class="btn_style_1" id="uploadSubmitBtn" type="submit">Enviar</button>
+        </form>
+        
+</div>    
 
 <div class="myUploads">
     <h2 class="noPaddingNoMargin">Meus Uploads</h2>
