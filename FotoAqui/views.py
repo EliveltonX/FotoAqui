@@ -222,10 +222,10 @@ def make_upload_img(request):
     img_list = []
 
     if (form.is_valid()):
-       
-        load = Load.objects.create(photographer=request.user,client = request.POST['client_email'])
+        
+        load = Load.objects.create(photographer=request.user,client = request.POST['client_email'].lower())
         load.save()
-        client_account = Account.objects.get(email=request.POST['client_email'])
+        client_account = Account.objects.get(email=request.POST['client_email'].lower())
         businessmodel = Business_model.objects.filter(active = True).first()
 
         for img in request.FILES.getlist('photo_img'):
@@ -233,7 +233,7 @@ def make_upload_img(request):
                 Image(
                     photo_img = img,
                     photographer = request.user,
-                    client_email = request.POST['client_email'],
+                    client_email = request.POST['client_email'].lower(),
                     load = load,
                     ordered = False,
                     expiration_date = datetime.today() + timedelta(businessmodel.expiration_time),
