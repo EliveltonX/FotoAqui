@@ -65,7 +65,7 @@ def dashboard(request):
 def my_images(request):
     info = Account.objects.get(username = request.user)
     imgs = Image.objects.filter(client_email = info.email,ordered = False).order_by('load')
-    business = Business_model.objects.get(title = 'modelo_teste')
+    business = Business_model.objects.get(active = True)
     return render(request, 'Pages/my_images.html',{
         'info':info,
         'imgs':imgs,
