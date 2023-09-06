@@ -19,13 +19,19 @@
         <h2 class="noPaddingNoMargin">Upload</h2>
             <form action="{% url 'FotoAqui:upload_img' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{image_load.client_email}}
                 <label class="inputLabel" for="imgs">
                     <!--{{image_load.photo_img}}-->
                     <input type="file" name="photo_img" class="imgInput" id="imgs" accept="image/*" multiple="true">
-                    <span>Selecione as Imagens</span>
+                    <span id="numOfFiles">Selecione as Imagens</span>
                 </label>
-                <button class="btn_style_1" type="submit">Enviar</button>
+
+                <div class="upload_imgs_preview" id="upload_imgs_preview">
+
+
+                </div>
+                
+                {{image_load.client_email}}
+                <button class="btn_style_1" id="uploadSubmitBtn" type="submit">Enviar</button>
             </form>
             
     </div>    
@@ -54,5 +60,6 @@
 </div>
 
 <link rel="stylesheet" href="{% static '/css/dashboard.css' %}">
+<script src="{% static '/js/uploadImgs.js' %}"></script>
 
 {% endblock content %}

@@ -85,6 +85,13 @@
     height: 100px;
     width: auto;
 }
+#upload_imgs_preview{
+    background-color: #585858;
+}
+.img_preview{
+    width: 10%;
+}
+
 @media only screen and (max-width: 900px) {
 
     .dashboar_top_row{
