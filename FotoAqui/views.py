@@ -208,6 +208,16 @@ def completeOrder (request):
     order = Order.objects.get(id = body['order_id'])
     order.ordered = True
     order.save()
+
+    to_pay = Image.objects.filter(order = order)
+    
+    for img in to_pay:
+        photographer = Account.objects.get(username = img.photographer)
+        wallet = Wallet.objects.get(account = photographer)
+        new_value = wallet.value+Business_model.objects.get(active = True).img_price
+        wallet.value = new_value
+        wallet.save()
+
     Image.objects.filter(order = order).update(ordered = True)
     messages.success(request,'Pagamento confirmado com sucesso!')
     return redirect('FotoAqui:home')

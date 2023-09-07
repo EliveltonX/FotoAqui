@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account, HomeComments, Image,Load,Business_model,Order
+from .models import Account, HomeComments, Image,Load,Business_model,Order,Wallet
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -44,6 +44,10 @@ class LoadAdmin(admin.ModelAdmin):
 class Business_modelAdmin(admin.ModelAdmin):
     ...
 
+class WalletAdmin(admin.ModelAdmin):
+    ...
+
+admin.site.register(Wallet,WalletAdmin)
 admin.site.register(Order,OrderAdmin)
 admin.site.register(Business_model,Business_modelAdmin)
 admin.site.register(Load,LoadAdmin)
