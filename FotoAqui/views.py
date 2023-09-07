@@ -50,6 +50,7 @@ def dashboard(request):
 
     info = Account.objects.get(username = request.user)
     loads = Load.objects.filter(photographer = info)
+    wallet = Wallet.objects.get(account = request.user.id)
     if(info.isPhotogapher == False):
         return redirect('FotoAqui:home')
 
@@ -60,6 +61,7 @@ def dashboard(request):
         'image_load':image_load,
         'loads':loads,
         'info':info,
+        'wallet':wallet,
     })
 @login_required(login_url='FotoAqui:Home',redirect_field_name='next')
 def my_images(request):
@@ -217,6 +219,13 @@ def completeOrder (request):
         new_value = wallet.value+Business_model.objects.get(active = True).img_price
         wallet.value = new_value
         wallet.save()
+
+        operation = Operation.objects.create(
+            wallet = wallet,
+            op_type ='Compra-IMG',
+            value = Business_model.objects.get(active=True).img_price,
+            order = order)
+        operation.save()
 
     Image.objects.filter(order = order).update(ordered = True)
     messages.success(request,'Pagamento confirmado com sucesso!')

@@ -12,16 +12,6 @@ class Account(AbstractUser):
     def __str__(self):
         return str(self.username)
 
-class Wallet (models.Model):
-    account = models.ForeignKey(Account,on_delete=models.CASCADE)
-    value = models.FloatField(default=0.0, null=False,blank=False)
-
-class Operation (models.Model):
-    wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE)
-    op_type = models.CharField(max_length=12, default='deposito',blank=False)
-    value = models.FloatField(default=0.0,null=False,blank=False)
-    data = models.DateTimeField(auto_now_add=True)
-
 class HomeComments (models.Model):
     account = models.ForeignKey(Account,on_delete=models.CASCADE)
     stars = models.IntegerField(default=5)
@@ -59,7 +49,17 @@ class Order (models.Model):
     ordered_date = models.DateTimeField(auto_now_add=True)
     created = models.DateField(auto_now_add=True)
     qtd_imgs = models.IntegerField(default=0, null=True, blank=True)
-        
+
+class Wallet (models.Model):
+    account = models.ForeignKey(Account,on_delete=models.CASCADE)
+    value = models.FloatField(default=0.0, null=False,blank=False)
+
+class Operation (models.Model):
+    wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE)
+    op_type = models.CharField(max_length=12, default='deposito',blank=False)
+    value = models.FloatField(default=0.0,null=False,blank=False)
+    data = models.DateTimeField(auto_now_add=True)
+    order = models.ForeignKey(Order,null= True,on_delete=models.SET_NULL)
     
 class Image (models.Model):
     photo_img = models.ImageField(upload_to = 'imgs/%Y%M%D',null=True, blank=True, default='default.jpeg')
