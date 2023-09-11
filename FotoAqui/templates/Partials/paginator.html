@@ -1,0 +1,13 @@
+<div class="div-pagination">
+    
+    {% if imgs.has_previous %}
+    <a href="?page={{imgs.previous_page_number}}">Anterior</a>
+    {% endif %}
+    <span>
+    [pagina {{imgs.number}} de {{imgs.paginator.num_pages}}]
+    </span>
+    {% if imgs.has_next %}
+    <a href="?page={{imgs.next_page_number}}">Proxima</a>
+    {% endif %}
+
+</div>

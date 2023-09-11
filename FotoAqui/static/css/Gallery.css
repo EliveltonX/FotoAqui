@@ -14,6 +14,22 @@
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(212, 212, 212, 0.5);
 }
+.TitleAndPagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.div-pagination{
+    display: flex;
+    gap: 1rem;
+}
+.div-pagination > h1,h2,h3,h4,h5{
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
+
 
 .image-gallery{
     display: flex;

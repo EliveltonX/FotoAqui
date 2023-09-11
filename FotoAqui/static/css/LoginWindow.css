@@ -61,6 +61,11 @@
     resize: none;
 }
 
+.checkBox_acept_terms{
+    width: 1.5rem;
+    aspect-ratio: 1/1;
+}
+
 .btn_style_1{
     font-family: 'Poppins';
     width: 100%;

@@ -9,8 +9,6 @@
     <h2 class="noPaddingNoMargin">Dashboard</h2>
     <br>
     Carteira: R$ {{wallet.value}}<br>
-    
-    <br><br>
     <span>As transferencias ocorrem todas as quinta-feiras. de acordo com as politicas de FotoAqui</span>
 </div>
 
@@ -26,11 +24,17 @@
 
             <div class="upload_imgs_preview" id="upload_imgs_preview">
 
-
             </div>
-            
-            {{image_load.client_email}}
-            <button class="btn_style_1" id="uploadSubmitBtn" type="submit">Enviar</button>
+            <hr>
+            <h3>Formulário de envio.</h3>
+            <div class= 'emailAndSend'>
+                {{image_load.client_email}}
+                <button class="btn-style-1" id="uploadSubmitBtn" type="submit">Enviar</button>
+            </div>
+            <br>
+            <span>*selecione imagens.</span>
+            <br>
+            <span>*Preencher email do cliente.</span>
         </form>
         
 </div>    

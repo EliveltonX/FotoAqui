@@ -4,7 +4,10 @@
 
 
 <div class="myImgsContainer">
-    <h2 class="noPaddingNoMargin">Meu Album</h2>
+    <div class="TitleAndPagination noPaddingNoMargin">
+        <h2 class="noPaddingNoMargin">Meu Album</h2>
+        {% include 'Partials/paginator.html' %}
+    </div>
 
     
     <div class="imgsContainer">
@@ -19,7 +22,7 @@
                     <div class="imgOverlay">
                         
                         <a class='btn-Download' download="FotoAqui.jpg" href="{{img.photo_img.url}}" title="Download">Download</a>
-                        <button disabled>Deletar esta Imagen</button>
+                        <button>Deletar esta Imagen</button>
                     </div>
                 </li>
 

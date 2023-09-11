@@ -43,7 +43,7 @@
 }
 
 .inputLabel{
-    height: 20vh;
+    height: 10vh;
     margin: 1rem;
     display: flex;
     justify-content: center;
@@ -83,13 +83,56 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: auto;
-    padding: 2rem 2rem;
+    padding: 1rem 1rem;
     align-self: center;
     justify-self: center;
     justify-content: center;
     align-items: center;
     gap: 2rem;
 }
+
+.emailAndSend{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+#uploadSubmitBtn{
+    background-color: var(--photo_Blue);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    padding: 6px 14px;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    border: 0;
+    cursor: pointer;
+}
+
+#id_client_email{
+    height: 2rem;
+    font-size: large;
+    font-family: 'Montserrat';
+    border-radius: 8px;
+    border: 2px solid var(--photo_Blue);
+    background-color: var(--white1);
+    outline: none;
+    resize: none;
+}
+
+#uploadSubmitBtn:disabled{
+    background-color: var(--white3);
+}
+
+
+#id_client_email :disabled{
+    border: 2px solid var(--white3);
+    background-color: var(--white2);
+
+}
+
 figure{
     display: flex;
     flex-direction: column;

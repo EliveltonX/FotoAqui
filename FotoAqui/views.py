@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate,login, logout
 from .models import *
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 import random
 import json
 from datetime import datetime, timedelta
@@ -68,18 +69,28 @@ def my_images(request):
     info = Account.objects.get(username = request.user)
     imgs = Image.objects.filter(client_email = info.email,ordered = False).order_by('load')
     business = Business_model.objects.get(active = True)
+    current_page = request.GET.get('page',1)
+
+    paginator = Paginator(imgs,10)
+    page_obj = paginator.get_page(current_page)
+
     return render(request, 'Pages/my_images.html',{
         'info':info,
-        'imgs':imgs,
+        'imgs':page_obj,
         'business':business,
     })
 @login_required(login_url='FotoAqui:home',redirect_field_name='next')
 def my_books (request):
     info = Account.objects.get(username = request.user)
     imgs = Image.objects.filter(client_email =info.email, ordered = True).order_by('load')
+    current_page = request.GET.get('page',1)
+
+    paginator = Paginator(imgs,10)
+    page_obj = paginator.get_page(current_page)
+
     return render(request, 'Pages/my_books.html',{
         'info':info,
-        'imgs':imgs,
+        'imgs':page_obj,
     })
 
 #DOING =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=->
@@ -189,7 +200,6 @@ def loginCreate (request):
                 )
             
             if is_authenticated is not None:
-                messages.success(request,'Login efetuado com sucesso!!!')
                 login(request,is_authenticated)
                 my_Account = Account.objects.get(username = request.user)
                 if my_Account.isPhotogapher:

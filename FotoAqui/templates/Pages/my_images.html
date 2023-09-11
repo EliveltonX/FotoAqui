@@ -6,7 +6,11 @@
 
 
 <div class="myImgsContainer">
-    <h2 class="noPaddingNoMargin">Novas Fotos</h2>
+    <div class="TitleAndPagination noPaddingNoMargin">
+        <h2 class="noPaddingNoMargin">Novas Fotos</h2>
+        {% include 'Partials/paginator.html' %}
+    </div>
+    
 
     <div class="imgsContainer">
         <ul class="image-gallery">

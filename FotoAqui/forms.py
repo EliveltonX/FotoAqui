@@ -15,6 +15,14 @@ class RegisterForm(forms.ModelForm):
         })
     )
 
+    acept_terms = forms.BooleanField(
+        required=True,
+        widget= forms.CheckboxInput(attrs={
+            'class':'checkBox_acept_terms',
+            'id':'checkBox_acept_terms',
+        })
+    )
+
     class Meta:
         model = Account
         fields = [
