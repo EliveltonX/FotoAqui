@@ -11,8 +11,8 @@
             <h4 class="noPaddingNoMargin" id='cart_bar_value'>Valor: R$ 25,00 </h4>
         </div>
         <div class="right noPaddingNoMargin">
-            <button onclick='go_to_cart()'>salvar e ir Para Checkout</button>
-            <button onclick="clear_cart_bar(this)">Limpar</button>
+            <a href={% url 'FotoAqui:checkout' %}>salvar e ir Para Checkout</a>
+            <!-- <button onclick="clear_cart_bar(this)">Limpar</button> -->
         </div>   
 
     </div>

@@ -64,6 +64,23 @@
     border-radius: 5px;
 }
 
+.img_selection_highlight{
+    pointer-events: none;
+    background-image: none;
+    background-color: var(--msg_green_1);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -100%;
+    left: 0px;
+    opacity: .5;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+
 .imgOverlay{
     display: flex;
     flex-direction: column;

@@ -19,9 +19,13 @@
                 <li>
                     <img src = "{{img.photo_img.url | watermark:"watermark01,position=R,opacity=70,scale=R90%,tile=1" }}"
                     alt=""
+                    onCart={{img.order}}
+                    id={{img.id}}
                     onclick = "showModal(this,{{img.id}});"
+                    class = "imageToBuy"
                     />
-                    <div class="imgOverlay">
+                    <div class='img_selection_highlight' id='img_selection_highlight_{{img.id}}'><h1><i class="fa-solid fa-cart-shopping"></h1></i></div>
+                    <div class="imgOverlay" id = 'imgOverlay_{{img.id}}'>
                         
                         <h4 class="expiration-date">Expira em: {{img.expiration_date}}<h4>
                         
@@ -39,7 +43,7 @@
     </div>
 </div>
 
-<a href="{% url 'FotoAqui:checkout' %}" hidden id='cart_link'>Isso nao deveria estar aparecendo na sua tela!</a>
+<!--<a href="{% url 'FotoAqui:checkout' %}" hidden id='cart_link'>Isso nao deveria estar aparecendo na sua tela!</a>-->
 
 {% include 'Partials/imgs_modal.html' %}
 

@@ -27,6 +27,9 @@ urlpatterns = [
     path('activate/<uidb64>/<token>', views.activate, name='activate'),
 
     path('test/',views.test_page,name='test_page'),
+    path('add_to_cart/', views.add_to_cart,name='add_to_cart'),
+    path('remove_to_cart/', views.remove_to_cart,name='remove_to_cart'),
+    path('update_cart_bar/', views.update_cart_bar, name='update_cart_bar'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

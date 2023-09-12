@@ -146,6 +146,59 @@ def create_order (request):
     return JsonResponse('tamo matutando!',safe=False)
 
 @login_required(login_url='FotoAqui:home',redirect_field_name='next')
+def add_to_cart(request):
+    data = json.loads(request.body)
+    order,has_created = Order.objects.get_or_create(account = request.user, ordered = False)
+    iten_to_add = Image.objects.get(id=data['img_id'])
+    print(order)
+    print(iten_to_add.order)
+    
+    if iten_to_add.order != order:
+        iten_to_add.order = order
+        iten_to_add.save()
+        order.qtd_imgs += 1
+        order.save()
+    
+    data = {
+        'message':'IMG: ' + str(iten_to_add.pk) + ' adcionado a ordem: '+ str(order.pk),
+        'order_qtd_imgs':order.qtd_imgs
+        }
+    return JsonResponse(data,safe=False) 
+
+@login_required(login_url='FotoAqui:home',redirect_field_name='next')
+def remove_to_cart(request):
+    data = json.loads(request.body)
+    iten_to_remove = Image.objects.get(id=data['img_id'])
+    
+    if iten_to_remove.order != None:
+        order = iten_to_remove.order
+        iten_to_remove.order = None
+        iten_to_remove.save()
+        order.qtd_imgs -= 1
+        order.save()
+
+    data = {
+        'message':'IMG: ' + str(iten_to_remove.pk) + ' removida da ordem: '+ str(order.pk),
+        'order_qtd_imgs':order.qtd_imgs
+        }
+    return JsonResponse(data,safe=False)
+
+@login_required(login_url='FotoAqui:home',redirect_field_name='next')
+def update_cart_bar (request):
+
+    order = Order.objects.get(account = request.user, ordered = False)
+    buss_model = Business_model.objects.get(active = True)
+
+    if order != None:
+        data={
+            'message':'update cart Bar',
+            'qtd':order.qtd_imgs,
+            'vl': buss_model.img_price,
+        }
+
+    return JsonResponse(data,safe=False)
+
+@login_required(login_url='FotoAqui:home',redirect_field_name='next')
 def upload_viwer(request):
     return render(request,'Pages/TEST.html')
 def userCreated (request):
