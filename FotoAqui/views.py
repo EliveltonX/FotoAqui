@@ -186,7 +186,7 @@ def remove_to_cart(request):
 @login_required(login_url='FotoAqui:home',redirect_field_name='next')
 def update_cart_bar (request):
 
-    order = Order.objects.get(account = request.user, ordered = False)
+    order, wasCreate = Order.objects.get_or_create(account = request.user, ordered = False)
     buss_model = Business_model.objects.get(active = True)
 
     if order != None:

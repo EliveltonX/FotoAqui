@@ -8,6 +8,7 @@ class Account(AbstractUser):
     cpf = models.CharField(max_length=14)
     data_nasc = models.DateField(auto_now=False, null=True)
     img_perfil = models.ImageField(upload_to='imgs/perfis/%Y',null=False, default="SEM-IMAGEM")
+    likes = models.IntegerField(default=0)
 
     def __str__(self):
         return str(self.username)
