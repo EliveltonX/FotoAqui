@@ -84,10 +84,12 @@
 .imgOverlay{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     position: absolute;
     bottom: 0;
     opacity: 0;
-    max-width: 70%;
+    width: 100%;
+    height: 100%;
 }
 .imgOverlay>h4{
     margin: 0;
