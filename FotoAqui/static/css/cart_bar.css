@@ -9,7 +9,12 @@
     padding: 1rem 4rem;
     width: 100vw;
     box-sizing:border-box ;
+    transform: translateY(5rem);
+    transition: transform 250ms ease-in-out;
 
+}
+.cart_bar:hover{
+    transform: translateY(0px);
 }
 
 .horizontal_Layout_cartBar{
