@@ -8,6 +8,9 @@
 <div class="myImgsContainer">
     <div class="TitleAndPagination noPaddingNoMargin">
         <h2 class="noPaddingNoMargin">Novas Fotos</h2>
+
+        <h4>Remover fotos com dislike: <input type="checkbox" checked=True id="display_disliked" onclick='display_disliked()'></h4>
+
         {% include 'Partials/paginator.html' %}
     </div>
     
@@ -24,7 +27,7 @@
                     onclick = "showModal(this,{{img.id}});"
                     class = "imageToBuy"
                     />
-                    <div class='img_selection_highlight' id='img_selection_highlight_{{img.id}}'><h1><i class="fa-solid fa-cart-shopping"></h1></i></div>
+                    <div class='img_selection_highlight' id='img_selection_highlight_{{img.id}}'><h1><i class="fa-solid fa-cart-shopping"></i></h1></div>
                     <div class="imgOverlay" id = 'imgOverlay_{{img.id}}'>
                         
                         <h4 class="expiration-date">Expira em: {{img.expiration_date}}<h4>
@@ -32,8 +35,8 @@
                         <div class="div_likeDislike">
                             <button id='btn-addtocart_{{img.id}}' class='btn-addToCart' onclick="addToCart(this,{{img.id}})">Adicionar ao carrinho</button>
                             <button id='btn-removetocart_{{img.id}}' class='btn-removeFromCart' onclick="removeFromCart(this,{{img.id}})">Remover do carrinho</button>
-                            <button class='btn-likeThisImg' ><i class="fa-solid fa-thumbs-up" style="color: #1e88e5;"></i></button>
-                            <button class='btn-deleteThisImg' ><i class="fa-solid fa-trash-can" style="color: #8f0000;"></i></button>
+                            <button class='btn-likeThisImg_{{img_id}}' onclick="LikeImg(this,{{img.id}})" ><i class="fa-solid fa-thumbs-up" style="color: #1e88e5;"></i></button>
+                            <button class='btn-deleteThisImg_{{img_id}}' onclick="DislikeImg(this,{{img.id}})" ><i class="fa-solid fa-trash-can" style="color: #8f0000;"></i></button>
                         </div>
                     </div>
                 </li>
@@ -54,5 +57,7 @@
 <script type="text/javascript">
     var price = "{{ business.img_price | js }}";
 </script>
+
+<script src="{% static '/js/LikeAndDislike.js' %}"></script>
 
 {% endblock content %}

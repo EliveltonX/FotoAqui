@@ -9,6 +9,8 @@ app_name = 'FotoAqui'
 urlpatterns = [
     path('',views.login_page,name='home'),
     path('my_images/',views.my_images,name='my_images'),
+    path('my_images/like_Img/', views.like_img, name='like_img'),
+    path('my_images/dislike_Img/', views.dislike_img, name='dislike_img'),
     path('my_books/',views.my_books,name='my_books'),
     path('dashboard/',views.dashboard,name='dashboard'),
     path('uploadbook/',views.login_page,name='uploadbook'),
@@ -30,6 +32,7 @@ urlpatterns = [
     path('add_to_cart/', views.add_to_cart,name='add_to_cart'),
     path('remove_to_cart/', views.remove_to_cart,name='remove_to_cart'),
     path('update_cart_bar/', views.update_cart_bar, name='update_cart_bar'),
+    
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

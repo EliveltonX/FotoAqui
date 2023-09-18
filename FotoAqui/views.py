@@ -67,7 +67,7 @@ def dashboard(request):
 @login_required(login_url='FotoAqui:Home',redirect_field_name='next')
 def my_images(request):
     info = Account.objects.get(username = request.user)
-    imgs = Image.objects.filter(client_email = info.email,ordered = False).order_by('load')
+    imgs = Image.objects.filter(client_email = info.email,dislike = False, ordered = False).order_by('load')
     business = Business_model.objects.get(active = True)
     current_page = request.GET.get('page',1)
 
@@ -163,7 +163,31 @@ def add_to_cart(request):
         'message':'IMG: ' + str(iten_to_add.pk) + ' adcionado a ordem: '+ str(order.pk),
         'order_qtd_imgs':order.qtd_imgs
         }
-    return JsonResponse(data,safe=False) 
+    return JsonResponse(data,safe=False)
+
+#Client dando like na IMG
+@login_required(login_url='FotoAqui:home',redirect_field_name='next')
+def like_img(request):
+    info = json.loads(request.body)
+    img_to_like = Image.objects.get(id = info['img_id'])
+    img_to_like.like = True
+    img_to_like.save()
+
+    data = {'Message':'Colocou like na sua img id: ' + str(img_to_like.id)}
+    return JsonResponse (data,safe=False)
+
+#Client dando dislike na IMG
+@login_required(login_url='FotoAqui:home',redirect_field_name='next')
+def dislike_img(request):
+    info = json.loads(request.body)
+    img_to_dislike = Image.objects.get(id = info['img_id'])
+    img_to_dislike.dislike = True
+    img_to_dislike.save()
+
+    data = {'Message': 'Voce deu dislike na sua img id: ' + str(img_to_dislike.id),}
+    return JsonResponse(data,safe=False)
+
+
 
 @login_required(login_url='FotoAqui:home',redirect_field_name='next')
 def remove_to_cart(request):

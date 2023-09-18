@@ -7,6 +7,7 @@
     --white2: #f5f6f7;
     --white3: #e2e2e2;
     --white_transp: rgba(255, 255, 255, 0.75);
+    --white_box_shadow: rgba(100,100,100,0.3);
 
     --black1: #414141;
     --black2: #585858;
@@ -22,7 +23,7 @@
     --msg_warning_1: #a48000;
     --msg_warning_1: #ffebcc;
 
-    --msg_green_1: #33FFA2;
+    --msg_green_1: #33ff8f;
 
     /* Tamanhos de Fonte */
 

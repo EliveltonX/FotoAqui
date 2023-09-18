@@ -1,7 +1,12 @@
 {% load static %}
 
 <div class="cart_bar" id="cart_bar">
+    <div class="div_upper_part">
     <h3 class="noPaddingNoMargin">Selecionadas:</h3>
+    <div class="div_link_as_btn"></div>
+    <a class ="link_as_btn" href={% url 'FotoAqui:checkout' %}><i class="fa-solid fa-cart-shopping"></i> <span id="buttonWithQtd">Carrinho (009)</span></a>
+            <!-- <button onclick="clear_cart_bar(this)">Limpar</button> -->
+        </div>
     <hr class="noPaddingNoMargin"><br>
 
     <div class="horizontal_Layout_cartBar noPaddingNoMargin">
@@ -11,7 +16,7 @@
             <h4 class="noPaddingNoMargin" id='cart_bar_value'>Valor: R$ 25,00 </h4>
         </div>
         <div class="right noPaddingNoMargin">
-            <a href={% url 'FotoAqui:checkout' %}>salvar e ir Para Checkout</a>
+            <!--<a href={% url 'FotoAqui:checkout' %}><i class="fa-solid fa-cart-shopping"></i>salvar e ir Para Checkout</a>-->
             <!-- <button onclick="clear_cart_bar(this)">Limpar</button> -->
         </div>   
 

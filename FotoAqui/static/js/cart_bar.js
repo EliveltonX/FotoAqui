@@ -49,17 +49,11 @@ function update_CartBar() {
         //console.log(data[message]);
         in_cart_list = qtd
         _qtd = document.getElementById('cart_bar_qtd').innerHTML = 'Imagens Selecionadas: ' + qtd;
+        _qtd_btn = document.getElementById('buttonWithQtd').innerHTML = 'Comprar (' + qtd +')';
         _vl = document.getElementById('cart_bar_value').innerHTML = 'Valor Total: ' + vl_total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         displayIfNotEmpty();
     }
 
-    /*
-    vl = qtd*price;
-    in_cart_list = qtd
-    _qtd = document.getElementById('cart_bar_qtd').innerHTML = 'Imagens Selecionadas: ' + qtd;
-    _vl = document.getElementById('cart_bar_value').innerHTML = 'Valor Total: ' + vl.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    displayIfNotEmpty();
-    */
 }
 
 function addToCart(_btn,_img) {
