@@ -86,10 +86,14 @@
     flex-direction: column;
     justify-content: space-between;
     position: absolute;
+    pointer-events: none;
     bottom: 0;
     opacity: 0;
     width: 100%;
     height: 100%;
+}
+.imgOverlay > *{
+    pointer-events: all;
 }
 .imgOverlay>h4{
     margin: 0;

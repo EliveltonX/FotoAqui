@@ -32,10 +32,14 @@ class ImageAdmin(admin.ModelAdmin):
     list_display=(
         'client_email',
         'ordered',
+        'like',
+        'dislike',
         'created_at',
     )
     list_editable = (
         'ordered',
+        'like',
+        'dislike',
     )
 
 class LoadAdmin(admin.ModelAdmin):
