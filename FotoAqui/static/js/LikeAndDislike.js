@@ -6,6 +6,30 @@ function LikeImg(_btn,_img) {
 
     url = 'like_Img/';
 
+    _btn.style.display = 'none';
+    document.getElementById('btn-removeLike_'+_img).style.display = 'block';
+
+    fetch(url,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+            'X-CSRFToken':getToken('csrftoken'),
+        },
+        body:JSON.stringify({'img_id':_img})
+    })
+
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .then(data => update_CartBar());
+}
+
+function RemoveLikeImg(_btn,_img) {
+
+    url = 'remove_like_Img/';
+
+    _btn.style.display = 'none';
+    document.getElementById('btn-likeThisImg_'+_img).style.display = 'block';
+
     fetch(url,{
         method:'POST',
         headers:{
@@ -44,7 +68,21 @@ function DislikeImg(_btn,_img) {
     }
 }
 
-function eliminar_fotos_Dislike() {
-    mybool = document.querySelector('#display_disliked').checked;
-    console.log('eliminar fotos com dislike: '+mybool);
+Liked_Disliked();
+function Liked_Disliked() {
+    like_btn = document.getElementsByClassName('btn-likeThisImg');
+    dislike_btn = document.getElementsByClassName('btn-removeLike');
+
+    for (let i = 0; i < like_btn.length; i++) {
+
+       if (like_btn[i].getAttribute('like') == 'True') {
+            like_btn[i].style.display= 'none';
+            dislike_btn[i].style.display = 'block';
+       }else{
+            like_btn[i].style.display= 'block';
+            dislike_btn[i].style.display = 'none';
+       }
+        
+    }
+
 }

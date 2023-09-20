@@ -3,13 +3,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from . import views
 
-
 app_name = 'FotoAqui'
 
 urlpatterns = [
     path('',views.login_page,name='home'),
     path('my_images/',views.my_images,name='my_images'),
     path('my_images/like_Img/', views.like_img, name='like_img'),
+    path('my_images/remove_like_Img/', views.remove_like_img, name='remove_like_img'),
     path('my_images/dislike_Img/', views.dislike_img, name='dislike_img'),
     path('my_books/',views.my_books,name='my_books'),
     path('dashboard/',views.dashboard,name='dashboard'),

@@ -176,6 +176,17 @@ def like_img(request):
     data = {'Message':'Colocou like na sua img id: ' + str(img_to_like.id)}
     return JsonResponse (data,safe=False)
 
+@login_required(login_url='FotoAqui:home',redirect_field_name='next')
+def remove_like_img(request):
+    info = json.loads(request.body)
+    img_to_like = Image.objects.get(id = info['img_id'])
+    img_to_like.like = False
+    img_to_like.save()
+
+    data = {'Message':'Removeu like na sua img id: ' + str(img_to_like.id)}
+    return JsonResponse (data,safe=False)
+
+
 #Client dando dislike na IMG
 @login_required(login_url='FotoAqui:home',redirect_field_name='next')
 def dislike_img(request):
@@ -254,6 +265,8 @@ def registerCreate (request):
             user.is_active = False
             user.set_password(user.password)
             user.save()
+            myWallet,wasCreated = Wallet.objects.get_or_create(account = user)
+            myWallet.save()
             activateEmail(request, user, form.cleaned_data.get('email'))
             del(request.session['register_form_data'])
             #messages.success(request,'Usuario criado com sucesso Hora de Logar!')
@@ -346,9 +359,7 @@ def make_upload_img(request):
                 #filename = f'img_{}'
                 )
             )
-        print('>>>>>VVV>>>>>')
-        print(img_list)
-        print(request.FILES)
+            
         Image.objects.bulk_create(img_list)
         messages.success(request, 'imagens carregadas!')
         sendEmail_notification(request, client_account,client_account.email)

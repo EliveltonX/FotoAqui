@@ -49,7 +49,10 @@ class Business_modelAdmin(admin.ModelAdmin):
     ...
 
 class WalletAdmin(admin.ModelAdmin):
-    ...
+    list_display=(
+        'account',
+        'value',
+    )
 class OperationAdmin(admin.ModelAdmin):
     ...
 
